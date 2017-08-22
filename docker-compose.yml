@@ -1,0 +1,12 @@
+jenkinsrunner:
+  image: minotaurinc/jenkins:latest
+  volumes:
+    - /opt/persist/jenkins:/var/jenkins_home
+  ports:
+    - "50000:50000"
+jenkinsnginx:
+  image: minotaurinc/nginx-jenkins:latest
+  ports:
+    - "80:80"
+  links:
+    - jenkinsrunner:jenkinsrunner
